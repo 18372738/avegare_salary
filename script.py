@@ -35,6 +35,7 @@ def predict_rub_salary_sj(vacancy):
 def get_vacancy_statistics_hh(programming_languages):
     url = 'https://api.hh.ru/vacancies'
     per_page = 100
+    moscow_id = 1
     vacancies_by_language = {}
     for language in programming_languages:
         page = 0
@@ -43,7 +44,7 @@ def get_vacancy_statistics_hh(programming_languages):
             'page': page,
             'per_page': per_page,
             'text': f'Программист {language}',
-            'area': '1',
+            'area': moscow_id,
         }
         all_vacancies = []
         while page < page_number:
@@ -60,6 +61,7 @@ def get_vacancy_statistics_hh(programming_languages):
 def get_vacancy_statistics_sj(programming_languages, token):
     url = 'https://api.superjob.ru/2.0/vacancies/'
     vacancies_per_page = 100
+    moscow_id = 4
     vacancies_by_language = {}
     for language in programming_languages:
         page = 0
@@ -70,7 +72,7 @@ def get_vacancy_statistics_sj(programming_languages, token):
         params = {
             'count': vacancies_per_page,
             'page': page,
-            'town': 4,
+            'town': moscow_id,
             'keyword': f'Программист {language}',
         }
         all_vacancies = []
